@@ -1,0 +1,31 @@
+.header{
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+.place{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    justify-items: start;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;   
+    margin: 2% 0% 2% 0%;
+
+}
+
+.container{
+
+}
+
+.grid-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 25px;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    margin: 0% 1% 0% 1%;
+
+  }

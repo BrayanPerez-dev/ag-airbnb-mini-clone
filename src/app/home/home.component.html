@@ -1,0 +1,15 @@
+
+<section class="header">
+<app-header></app-header>
+<div class="place">
+    <div><h1 *ngIf="country"><b>Stays in {{country}}</b></h1></div>
+    <div><p *ngIf="numberResults">{{numberResults}}+ stays</p></div>
+</div>
+</section>
+<section class="container">
+    <div class="grid-container">
+        <div class="grid-item" *ngFor="let room of (rooms| finder:city:guests)"><app-room-card [room]="room"></app-room-card></div>
+    </div>
+</section>
+
+<app-filter-drawer></app-filter-drawer>

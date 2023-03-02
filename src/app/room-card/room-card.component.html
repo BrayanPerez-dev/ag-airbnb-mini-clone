@@ -1,0 +1,10 @@
+<div>
+    <img class="room-img" src="{{room.photo}}" width="300" height="240">
+    <div class="captions">
+    <div *ngIf="room.superHost" class="tag"><b>SUPER HOST</b></div>
+    <p class="description">{{room.type}} .{{room.beds}} beds</p>
+    <span><span nz-icon nzType="star" nzTheme="fill"></span>{{room.rating}}</span>
+    </div>
+    <p><b>{{room.title}}</b></p>
+</div>
+

@@ -1,0 +1,15 @@
+
+  <nz-drawer
+    [nzClosable]="false"
+    [nzVisible]="visible"
+    [nzPlacement]="placement"
+    (nzOnClose)="close()"
+  >
+    <ng-container *nzDrawerContent>
+    
+      <app-filter-desktop [locations]="locations"></app-filter-desktop>
+   
+
+    </ng-container>
+  </nz-drawer>
+

@@ -1,0 +1,117 @@
+<section class="desktop" *ngIf="!movilOrDesktop">
+  <form [formGroup]="roomsForm" (ngSubmit)="onSubmit()">
+
+    <div class="container">
+
+      <div class="item inputs">
+        <label for="searchText">LOCATION</label>
+        <input class="input-text-search" type="text" id="location" name="location" formControlName="location"
+          (focus)="showList()" placeholder="location">
+      </div>
+      <div class="item inputs">
+        <label for="guests-search">GUESTS</label>
+        <input class="guests-search" type="text" id="guests" name="guests" formControlName="guests"
+          (focus)="showFilter()" placeholder="Add guests" readonly>
+      </div>
+      <div class="item">
+        <div class="nested-container">
+          <div class="nested-item">
+            <nz-divider nzType="vertical"></nz-divider>
+          </div>
+          <div class="nested-item">
+            <button type="submit" class="btn-search"><span nz-icon nzType="search"></span>&nbsp;Search</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </form>
+
+    <div class="grid-container">
+
+      <div class="item" *ngIf="visibleSelect">
+        <ul *ngFor="let location of locations">
+          <li class="fas" (click)="updateLocation(location)">&#xf3c5; {{location.city}}, {{location.country}}</li>
+        </ul>
+      </div>
+      <div *ngIf="!visibleSelect">
+
+      </div>
+      <div class="item" *ngIf="visibleFilter">
+        <div class="second-nested-item">
+          <b>Adults</b>
+          <p class="ages">Ages 13 or above</p>
+          <button (click)="updateAdultsLessGuests(roomsForm.get('adults')?.value)" class="btn-guests"><i
+              class="fa">&#xf068;</i></button>{{roomsForm.get('adults')?.value}}<button
+            (click)="updateAdultsPlusGuests(roomsForm.get('adults')?.value)" class="btn-guests"><i
+              class="fa">&#xf067;</i></button>
+        </div>
+        <div class="second-nested-item">
+          <b>Children</b>
+          <p class="ages">Ages 2-12</p>
+          <button (click)="updateChildremLessGuests(roomsForm.get('childrem')?.value)" class="btn-guests"><i
+              class="fa">&#xf068;</i></button>{{roomsForm.get('childrem')?.value}}<button
+            (click)="updateChildremPlusGuests(roomsForm.get('childrem')?.value)" class="btn-guests"><i
+              class="fa">&#xf067;</i></button>
+        </div>
+      </div>
+    </div>
+</section>
+
+<section class="mobile" *ngIf="movilOrDesktop">
+  <form [formGroup]="roomsForm" (ngSubmit)="onSubmit()">
+
+    <div class="drawer-header">
+      <div class="item"><b>Edit your search</b></div>
+      <div class="item"><span nz-icon nzType="close" nzTheme="outline"></span></div>
+    </div>
+    <div class="container">
+      <div class="item-1 inputs">
+        <label for="searchText">LOCATION</label>
+        <input class="input-text-search" type="text" id="location" name="location" formControlName="location"
+          (focus)="showList()" placeholder="location">
+      </div>
+      <div class="item-divider">
+
+      </div>
+      <div class="item-2 inputs">
+        <label for="guests-search">GUESTS</label>
+        <input class="guests-search" type="text" id="guests" name="guests" formControlName="guests"
+          (focus)="showFilter()" placeholder="Add guests">
+      </div>
+    </div>
+
+    <div class="grid-container-mobile">
+      <div class="item-list" *ngIf="visibleSelect">
+        <ul *ngFor="let location of locations">
+          <li class="fas" (click)="updateLocation(location)">&#xf3c5; {{location.city}}, {{location.country}}</li>
+        </ul>
+      </div>
+      <div *ngIf="!visibleSelect">
+
+      </div>
+      <div class="item-filter" *ngIf="visibleFilter">
+        <div class="second-nested-item">
+          <b>Adults</b>
+          <p class="ages">Ages 13 or above</p>
+          <button type="button" (click)="updateAdultsLessGuests(roomsForm.get('adults')?.value)" class="btn-guests"><i
+              class="fa">&#xf068;</i></button>{{roomsForm.get('adults')?.value}}<button type="button"
+            (click)="updateAdultsPlusGuests(roomsForm.get('adults')?.value)" class="btn-guests"><i
+              class="fa">&#xf067;</i></button>
+        </div>
+        <div class="second-nested-item">
+          <b>Children</b>
+          <p class="ages">Ages 2-12</p>
+          <button type="button" (click)="updateChildremLessGuests(roomsForm.get('childrem')?.value)" class="btn-guests"><i
+              class="fa">&#xf068;</i></button>{{roomsForm.get('childrem')?.value}}<button type="button"
+            (click)="updateChildremPlusGuests(roomsForm.get('childrem')?.value)" class="btn-guests"><i
+              class="fa">&#xf067;</i></button>
+        </div>
+      </div>
+    </div>
+    <div class="section-btn">
+      <button type="submit"  class="btn-search"><span nz-icon nzType="search"></span>&nbsp;Search</button>
+    </div>
+  </form>
+
+</section>
